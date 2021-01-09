@@ -49,8 +49,9 @@ template_ja = """
 """
 
 
-def gaming(lines, w=90):
+def gaming(lines):
     pos = 0
+    w = max([len(x) for x in lines])  # count max width
     columns = shutil.get_terminal_size().columns
     
     while True:
