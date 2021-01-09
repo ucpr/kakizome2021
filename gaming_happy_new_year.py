@@ -4,7 +4,6 @@ import sys
 import shutil
 
 
-
 template_en = """
 ##
 ##
