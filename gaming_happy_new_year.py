@@ -49,7 +49,7 @@ template_ja = """
 """
 
 
-def gaming(lines):
+def gaming(lines, speed):
     pos = 0
     w = max([len(x) for x in lines])  # count max width
     columns = shutil.get_terminal_size().columns
@@ -71,7 +71,7 @@ def gaming(lines):
                 if pos + w > columns:
                     pos = 0
     
-            time.sleep(0.2) 
+            time.sleep(speed) 
 
     
 def get_option():
@@ -84,6 +84,13 @@ def get_option():
 	default="en",
 	choices=["en", "english", "ja", "japanese"],
     )
+    arg_parser.add_argument(
+        "-s",
+        "--speed",
+        type=float,
+        dest="speed",
+        default=0.2,
+    )
     return arg_parser.parse_args()
 
 
@@ -95,7 +102,7 @@ def main():
         template = template_ja
 
     lines = template.strip().split("\n")
-    gaming(lines)
+    gaming(lines, opt.speed)
 
 
 if __name__ == "__main__":
